@@ -1,1 +1,18 @@
-<h1>Por Región</h1>
+<h3>Buscar por región <small *ngIf="regionActiva">({{ regionActiva | titlecase }})</small></h3>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <button 
+        *ngFor="let region of regiones"
+        [class]="getClase(region)"
+        (click)="activarRegion(region)">{{ region | titlecase }}</button>
+    </div>
+</div>
+
+
+<div *ngIf="paises.length > 0" class="row">
+    <div class="col">
+      <app-pais-tabla [paises]="paises"></app-pais-tabla>
+    </div>
+</div>

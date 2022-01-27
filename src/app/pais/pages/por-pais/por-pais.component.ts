@@ -16,6 +16,8 @@ export class PorPaisComponent {
 
   paises: Country[] = [];
 
+  paisesSugeridos: Country[] = [];
+
   constructor(private paisService: PaisService) { }
 
   buscar( termino: string ) {
@@ -38,6 +40,9 @@ export class PorPaisComponent {
 
   sugerencias(termino: string) {
     this.hayError = false
+
+    this.paisService.buscarPais( termino )
+      .subscribe( resp => this.paisesSugeridos = resp);
     // TODO: crear sugerencias
   }
 

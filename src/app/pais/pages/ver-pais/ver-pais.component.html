@@ -1,1 +1,26 @@
-<p>ver-pais works!</p>
+<div *ngIf="!pais; else divPais" class="d-flex align-items-center">
+    <strong>Cargando...</strong>
+    <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+</div>
+
+<ng-template #divPais>
+
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <h1>{{ pais.name }}</h1>
+                    <br>
+                    <ul class="list-group">
+                        <li class="list-group-item">Población: {{ pais.population }}</li>
+                        <li class="list-group-item">Capital: {{ pais.capital }}</li>
+                    </ul>
+                </div>
+                <div class="col-4">
+                    <img [src]="pais.flag" class="img-thumbnail" style="width: 100%;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ng-template>

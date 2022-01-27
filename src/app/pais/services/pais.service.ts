@@ -9,7 +9,7 @@ import { Country } from '../interfaces/pais.interface';
 })
 export class PaisService {
 
-  private apiurl: string = 'https://restcountries.eu/rest/v2';
+  private apiurl: string = 'https://restcountries.com/v2';
 
 
   constructor( private http: HttpClient) { }
@@ -27,6 +27,21 @@ export class PaisService {
 
     return this.http.get<Country[]>(url);
 
+  }
+
+  detallesPais( termino: string ): Observable<Country> {
+
+    const url = `${ this.apiurl }/alpha/${ termino }`;
+
+    return this.http.get<Country>(url);
+
+  }
+
+  buscarRegion( region: string ): Observable<Country[]> {
+
+    const url = `${ this.apiurl }/region/${ region }`;
+
+    return this.http.get<Country[]>(url);
   }
   
 }
